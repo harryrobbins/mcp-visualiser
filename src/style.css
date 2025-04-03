@@ -1,0 +1,26 @@
+/* src/app.css */
+
+/* Import Svelte Flow base styles */
+@import '@xyflow/svelte/dist/style.css';
+@import 'svelte-json-tree/dist/svelte-json-tree.css';
+/* If using Tailwind, import its layers */
+/*@tailwind base;*/
+/*@tailwind components;*/
+/*@tailwind utilities;*/
+
+/* Add any other global styles here */
+body {
+  font-family: sans-serif;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden; /* Prevent body scroll */
+}
+
+/* Example: Define highlight class if needed globally,
+   though direct styles were used in the component example */
+/*
+.highlight-node {
+  border: 2px solid dodgerblue !important;
+}
+*/
