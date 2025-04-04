@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{html,js,svelte,ts}'], // Configure paths to your template files
+  content: [
+    "./index.html", // Checks the root index.html
+    "./src/**/*.{js,ts,jsx,tsx}", // Checks all JS/TS/JSX/TSX files in src
+  ],
   theme: {
     extend: {},
   },

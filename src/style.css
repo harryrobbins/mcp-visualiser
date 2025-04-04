@@ -1,26 +1,78 @@
-/* src/app.css */
+/* src/style.css */
 
-/* Import Svelte Flow base styles */
-@import '@xyflow/svelte/dist/style.css';
-@import 'svelte-json-tree/dist/svelte-json-tree.css';
-/* If using Tailwind, import its layers */
-/*@tailwind base;*/
-/*@tailwind components;*/
-/*@tailwind utilities;*/
+/* Import Tailwind base styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Add any other global styles here */
+/* Import JSON viewer styles (if needed - depends on the library) */
+/* Example for react-json-view, often it injects styles */
+
+/* Global application styles */
 body {
-  font-family: sans-serif;
-  margin: 0;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden; /* Prevent body scroll */
+  @apply font-sans m-0 h-screen w-screen overflow-hidden;
 }
 
-/* Example: Define highlight class if needed globally,
-   though direct styles were used in the component example */
-/*
-.highlight-node {
-  border: 2px solid dodgerblue !important;
+.app-container {
+  @apply flex h-screen w-screen font-sans;
 }
-*/
+
+.flow-container {
+  @apply flex-grow h-full border-r border-gray-300 relative;
+  /* width: 100%; (flex-grow handles this) */
+}
+
+.sidebar {
+  @apply w-[350px] p-4 box-border overflow-y-auto h-full bg-gray-100 flex flex-col;
+}
+
+.sidebar h2, .sidebar h3 {
+  @apply mt-0;
+}
+
+.sidebar button {
+  @apply py-2 px-4 text-base mb-4 cursor-pointer bg-blue-500 text-white rounded hover:bg-blue-600;
+}
+
+.step-info {
+  @apply bg-gray-200 p-2 rounded mb-4;
+}
+
+.mcp-display {
+  @apply flex-grow overflow-auto bg-white border border-gray-200 p-1 text-sm;
+  /* Ensure react-json-view container takes space */
+  & > div { /* Target the container div of react-json-view */
+      height: 100%;
+  }
+}
+
+/* --- React Flow Custom Styles --- */
+
+/* Default Node Styles */
+.react-flow__node {
+  @apply border border-gray-500 py-2 px-4 rounded bg-white min-w-[150px] text-center;
+  /* position, display, visibility are handled by React Flow */
+}
+
+/* Highlighted Node Style */
+.react-flow__node.highlight {
+  @apply bg-blue-200 border-blue-500;
+}
+
+/* Default Edge Style */
+.react-flow__edge .react-flow__edge-path {
+  @apply stroke-gray-400;
+  stroke-width: 2;
+  /* fill, stroke-linecap, stroke-linejoin, pointer-events, visibility are handled by React Flow */
+}
+
+/* Highlighted Edge Style */
+.react-flow__edge.highlight .react-flow__edge-path {
+  @apply stroke-blue-500;
+  stroke-width: 3;
+}
+
+/* Animated edges get styled by React Flow, but you can add overrides */
+/* .react-flow__edge.animated .react-flow__edge-path { */
+  /* stroke-dasharray: 5, 5; */
+/* } */
